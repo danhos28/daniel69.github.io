@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Menu</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">
+	table{width:50%}
+  </style>
+  
+</head>
+<body>
+	<div class="container">
+		<h1>WARUNG MAKAN</h1>
+			
+		
+	<h4>ORDER YOUR FOOD HERE</h4>
+		<table class="table">
+		<thead>
+		</thead>
+		<tbody>
+			<tr class="success">
+			<td>No.</td>
+				<td>Menu</td>
+				<td>Price</td>
+				<td>Quantity</td>
+				<td>SubTotal</td>
+			</tr>
+			
+			<tr class="active">
+				<td>1</td>
+				<td>Nasi Goreng Spesial</td>
+				<td>Rp. 30.000</td>
+				<td>
+					<input type="button" onClick="plusMakan1()" value="+"></input>
+					<span id="jumlah1">0</span>
+					<input type="button" onClick="minMakan1()" value="-"></input>
+				</td>
+				<td>
+					<p>Rp.<span id="ttl1">0</p></span>
+				</td>
+			</tr>
+			
+			<tr class="active">
+				<td>2</td>
+				<td>Nasi Ayam Bakar</td>
+				<td>Rp. 25.000</td>
+				<td>
+					<input type="button" onClick="plusMakan2()" value="+"></input>
+					<span id="jumlah2">0</span>
+					<input type="button" onClick="minMakan2()" value="-"></input>
+				</td>
+				<td>
+					<p>Rp.<span id="ttl2">0</p></span>
+				</td>
+			</tr>
+			
+			<tr class="active">
+				<td>3</td>
+				<td>Nasi Sop Ayam</td>
+				<td>Rp. 20.000</td>
+				<td>
+					<input type="button" onClick="plusMakan3()" value="+"></input>
+					<span id="jumlah3">0</span>
+					<input type="button" onClick="minMakan3()" value="-"></input>
+				</td>
+				<td>
+					<p>Rp.<span id="ttl3">0</p></span>
+				</td>
+			</tr>
+			
+			<tr class="active">
+				<td>4</td>
+				<td>Nasi Sate Ayam</td>
+				<td>Rp. 35.000</td>
+				<td>
+					<input type="button" onClick="plusMakan4()" value="+"></input>
+					<span id="jumlah4">0</span>
+					<input type="button" onClick="minMakan4()" value="-"></input>
+				</td>
+				<td>
+					<p>Rp.<span id="ttl4">0</p></span>
+				</td>
+			</tr>
+			
+			 <tr class="danger">
+                <td colspan="4">Total Price</td>
+                <td >Rp. <span id="totalp">0</span></td>
+              </tr>
+            </tbody>
+          </table>
+			<br>
+			
+			
+        <button type="button" name="button" onclick="invoice()">Invoice</button>
+		<input type="button" onClick="totin()" value="Total All"></input>
+      
+		
+
+
+          </div>
+        
+		
+		
+		
+		
+		</tbody>
+	</table>
+    <div id="invoices"></div>
+	<div id="total"></div>
+		</div>
+	<script language="JavaScript">
+	var many1=0;
+	var many2=0;
+	var many3=0;
+	var many4=0;
+	var count=" ";
+	var total=0;
+	var k=1;
+	var d=0;
+	var e=0;
+	var f=0;
+	var g=0;
+	var h=0;
+	
+	
+	function plusMakan1()
+	{
+		many1+=1;
+		document.getElementById('jumlah1').innerHTML = many1;
+		document.getElementById('ttl1').innerHTML = many1*30000;
+		total+=30000;
+		totalHrg();
+	}
+	function minMakan1()
+	{if (many1>0) {
+		many1-=1;
+		document.getElementById('jumlah1').innerHTML = many1;
+		document.getElementById('ttl1').innerHTML = many1*30000;
+		total-=30000;
+		totalHrg();
+	}
+	}	
+	
+	function plusMakan2()
+	{
+		many2+=1;
+		document.getElementById('jumlah2').innerHTML = many2;
+		document.getElementById('ttl2').innerHTML = many2*25000;
+		total+=25000;
+		 totalHrg();
+	}
+	function minMakan2()
+	{if (many2>0) {
+		many2-=1;
+		document.getElementById('jumlah2').innerHTML = many2;
+		document.getElementById('ttl2').innerHTML = many2*25000;
+		total-=25000;
+		 totalHrg();
+	}
+	}	
+	
+	function plusMakan3()
+	{
+		many3+=1;
+		document.getElementById('jumlah3').innerHTML = many3;
+		document.getElementById('ttl3').innerHTML = many3*20000;
+		total+=20000;
+		totalHrg();
+	}
+	function minMakan3()
+	{if (many3>0) {
+		many3-=1;
+		document.getElementById('jumlah3').innerHTML = many3;
+		document.getElementById('ttl3').innerHTML = many3*20000;
+		total-=20000;
+		totalHrg();
+	}
+	}	
+	
+	function plusMakan4()
+	{
+		many4+=1;
+		document.getElementById('jumlah4').innerHTML = many4;
+		document.getElementById('ttl4').innerHTML = many4*35000;
+		total+=35000;
+		totalHrg();
+	}
+	function minMakan4()
+	{if (many4>0) {
+		many4-=1;
+		document.getElementById('jumlah4').innerHTML = many4;
+		document.getElementById('ttl4').innerHTML = many4*35000;
+		total-=35000;
+		totalHrg();
+	}
+	}
+
+		 function totalHrg(){
+        document.getElementById('totalp').innerHTML = total;
+      }
+
+	  
+     function invoice(){
+	  if(many1>0||many2>0||many3>0||many4>0){
+	count+= "<h1>Invoice"+k+"</h1>"+"<p>Nasi Goreng Spesial ("+many1+") Rp."+many1*30000+"</p>"+"<p>Nasi Ayam Bakar ("+many2+") Rp."+many2*25000+"</p>"+"<p>Nasi Sop Ayam ("+many3+") Rp."+many3*20000+"</p>"+"<p>Nasi Sate Ayam ("+many4+") Rp."+many4*35000+"</p>"+"<p>Total Price : Rp.  "+total+"</p>";
+	document.getElementById('invoices').innerHTML = count;
+		k++;}
+		d+=many1;
+		e+=many2;
+		f+=many3;
+		g+=many4;
+		h+=total;
+	 } 
+	 function totin()
+	 {
+		document.getElementById('total').innerHTML = "<p><center><h1>Invoice : </h1>"+(k-1)+"</cemter></p>"+"<p>Nasi Goreng Spesial : "+d+"</p>"+"<p>Nasi Ayam Bakar : "+e+"</p>"+"<p>Nasi Sop Ayam : "+f+"</p>"+"<p>Nasi Sate Ayam : "+g+"</p>"+"<p>Total Bayar : Rp. "+h+"</p>";
+	 }
+	  
+	  
+	  
+	</script>
+</body>
+</html>
